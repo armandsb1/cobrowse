@@ -16,6 +16,12 @@
 <div id="cobrowse-security-form"></div>
     
 <a href="https://www.genesys.com">Link to Genesys webpage</a>    
+    
+      <form id="form"> 
+  <input type="search" id="query" name="search" placeholder="Search...">
+  <button>Search</button>
+</form>
+
 
 <!-- Co-browse with voice uses the webchat API, so include it here -->
 <script src="https://apps.mypurecloud.de/webchat/jsapi-v1.js" type="text/javascript"></script>
@@ -84,6 +90,66 @@ return {
 }
 })();
 </script>
+    <script src="https://apps.mypurecloud.de/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.de/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>
 
+<script>
+  window._genesys ={"widgets":{"webchat":{"transport":{"type": "purecloud-v2-sockets",
+          "dataURL": "https://api.mypurecloud.de",
+          "deploymentKey": "51b949a5-51f1-4cfa-aae7-48359254a394",
+          "orgGuid": "0b64ef26-3681-4cbf-9675-9154ddc0456a",
+          "interactionData":{"routing":{"targetType": "QUEUE",
+              "targetAddress": "MarketingCampaign",
+              "priority": 2}}},
+        "userData":{"addressStreet": "",
+          "addressCity": "",
+          "addressPostalCode": "",
+          "addressState": "",
+          "phoneNumber": "",
+          "customField1Label": "",
+          "customField1": "",
+          "customField2Label": "",
+          "customField2": "",
+          "customField3Label": "",
+          "customField3": ""}}}};
+
+  function getAdvancedConfig(){return{"form":{"autoSubmit": false,
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "subject": ""},
+      "formJSON":{"wrapper": "<table></table>",
+        "inputs":[{"id": "cx_webchat_form_firstname",
+            "name": "firstname",
+            "maxlength": "100",
+            "placeholder": "Required",
+            "label": "First Name"},{"id": "cx_webchat_form_lastname",
+            "name": "lastname",
+            "maxlength": "100",
+            "placeholder": "Required",
+            "label": "Last Name"},{"id": "cx_webchat_form_email",
+            "name": "email",
+            "maxlength": "100",
+            "placeholder": "Optional",
+            "label": "Email"},{"id": "cx_webchat_form_subject",
+            "name": "subject",
+            "maxlength": "100",
+            "placeholder": "Optional",
+            "label": "Subject"}]}};}const customPlugin = CXBus.registerPlugin('Custom');
+</script>
+
+
+
+<script>
+
+  (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){(a[o].q=a[o].q||[]).push(arguments)},a[o].l=1*new Date();u=t.createElement(c),
+  d=t.getElementsByTagName(c)[0];u.async=1;u.src=l;u.charset='utf-8';d.parentNode.insertBefore(u,d)})(window, document, 'script', 'https://apps.mypurecloud.de/journey/sdk/js/web/v1/ac.js', 'ac');
+  ac('init', '0b64ef26-3681-4cbf-9675-9154ddc0456a',{region: 'euc1'});
+  ac('pageview');
+ac('record', 'product_added',{productName: 'Sample product',
+  productPrice: '100.00'});
+ac('load', 'autotrackIdle',{idleEvents:[{eventName: 'stuck_on_page'},{idleAfter: 60},{eventName: 'idle_for_2_min', idleAfter: 120},]}, function (){console.log('"autotrackIdle" has been loaded');});
+
+</script>
+  
 </body>
 </html>
